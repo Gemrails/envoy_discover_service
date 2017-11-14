@@ -1,0 +1,54 @@
+{
+  "listeners": [],
+  "lds": {
+    "cluster": "lds",
+    "refresh_delay_ms": 30000
+  },
+  "admin": {
+    "access_log_path": "/var/log/envoy/admin_access.log", 
+    "address": "tcp://0.0.0.0:65534"
+  },  
+  "cluster_manager": {
+    "sds": {
+      "cluster": {
+        "name": "sds", 
+        "connect_timeout_ms": 250, 
+        "type": "strict_dns", 
+        "lb_type": "round_robin", 
+        "hosts": [
+          {
+            "url": "tcp://DISCOVERSERVER:DISCOVERPORT"
+          }
+        ]
+      }, 
+      "refresh_delay_ms": 5000
+    }, 
+    "cds": {
+      "cluster": {
+        "name": "cds", 
+        "connect_timeout_ms": 250, 
+        "type": "strict_dns", 
+        "lb_type": "round_robin", 
+        "hosts": [
+          {
+            "url": "tcp://DISCOVERSERVER:DISCOVERPORT"
+          }
+        ]
+      }, 
+      "refresh_delay_ms": 30000
+    }, 
+    "clusters": [
+      {
+        "name": "lds", 
+        "connect_timeout_ms": 250, 
+        "type": "strict_dns", 
+        "lb_type": "round_robin", 
+        "hosts": [
+          {
+            "url": "tcp://DISCOVERSERVER:DISCOVERPORT"
+          }
+        ]
+      }
+    ]
+  }
+}

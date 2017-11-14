@@ -29,7 +29,7 @@ cat <<EOF>> $CONFIGPATH
     "refresh_delay_ms": 30000
   },
   "admin": {
-    "access_log_path": "/var/log/envoy/admin_access.log", 
+    "access_log_path": "/dev/null", 
     "address": "tcp://0.0.0.0:65534"
   },  
   "cluster_manager": {

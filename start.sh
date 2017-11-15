@@ -93,9 +93,8 @@ func_update_conf(){
 func_main(){
     func_init
     func_set_service_nodes
-    #func_update_conf
     func_modify_conf
-    $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID --service-node $SERVICE_NODE
+    $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID"_"$SERVICE_NAME --service-node $SERVICE_NODE
 }
 
 func_check_env(){

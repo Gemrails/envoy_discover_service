@@ -11,7 +11,7 @@ func_set_service_nodes(){
     for nn in $mm 
     do 
         ALIAS=`echo $nn | awk -F ":" '{print $1}'`
-        if [[ $SERVICE_NODE == "" ]];then
+        if [[ "$SERVICE_NODE" == "" ]];then
             SERVICE_NODE=$ALIAS
             continue
         fi
@@ -126,6 +126,7 @@ func_check_env(){
 
 func_test(){
     DEPEND_SERVICE=gr6adef3:9a1576b6a4a8e3185646cdae916adef3,gr123123:678906781923123sdfssdfsgsgs,gr44444:adsfadfafadfasdfasdfasdf
+    #DEPEND_SERVICE=gr6adef3:9a1576b6a4a8e3185646cdae916adef3
     TENANT_ID=1b05123123124tenantid
 }
 

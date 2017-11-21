@@ -8,6 +8,9 @@ func_init(){
 func_set_service_nodes(){
     mm=`echo $DEPEND_SERVICE | sed "s/,/ /g"`
     SERVICE_NODE=""
+    if [[ "$PLUGIN_MOEL" == "upnet-plugin" ]];then
+        SERVICE_NODE=$SERVICE_NAME
+    fi
     for nn in $mm 
     do 
         ALIAS=`echo $nn | awk -F ":" '{print $1}'`

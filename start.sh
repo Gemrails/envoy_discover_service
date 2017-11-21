@@ -29,7 +29,7 @@ cat <<EOF>> $CONFIGPATH
   "listeners": [],
   "lds": {
     "cluster": "lds",
-    "refresh_delay_ms": 30000
+    "refresh_delay_ms": 3000
   },
   "admin": {
     "access_log_path": "/dev/null", 
@@ -48,7 +48,7 @@ cat <<EOF>> $CONFIGPATH
           }
         ]
       }, 
-      "refresh_delay_ms": 5000
+      "refresh_delay_ms": 3000
     }, 
     "cds": {
       "cluster": {
@@ -62,7 +62,7 @@ cat <<EOF>> $CONFIGPATH
           }
         ]
       }, 
-      "refresh_delay_ms": 30000
+      "refresh_delay_ms": 3000
     }, 
     "clusters": [
       {

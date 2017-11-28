@@ -10,7 +10,7 @@ func_set_service_nodes(){
     SERVICE_NODE=""
     if [[ "$PLUGIN_MOEL" == "upnet-plugin" ]];then
         SERVICE_NODE=$SERVICE_NAME
-    fi
+    fi 
     for nn in $mm 
     do 
         ALIAS=`echo $nn | awk -F ":" '{print $1}'`
@@ -118,10 +118,6 @@ func_check_env(){
     fi
     if [[ -z $TENANT_ID ]];then
         echo "need env TENANT_ID"
-        exit 9
-    fi
-    if [[ -z $DEPEND_SERVICE ]];then
-        echo "need env DEPEND_SERVICE"
         exit 9
     fi
 }

@@ -102,6 +102,11 @@ func_main(){
 
 func_check_env(){
     #@ DISCOVERSERVER DISCOVERPORT TENANT_ID DEPEND_SERVICE
+    if [[ -z $DISCOVER_URL ]];then
+        export DISCOVER_URL="http://172.30.42.1:6100/" 
+    fi
+    DISCOVERSERVER=`echo $DISCOVER_URL | awk -F "/" '{print $3}' | awk -F ":" '{print $1}'`
+    DISCOVERPORT=`echo $DISCOVER_URL | awk -F "/" '{print $3}' | awk -F ":" '{print $2}'`
     if [[ -z $DISCOVERSERVER ]];then
         DISCOVERSERVER="127.0.0.1" 
         echo "env DISCOVERSERVER set to default localhost."

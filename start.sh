@@ -1,6 +1,5 @@
 #!/bin/sh
 set -e
-set -x
 
 func_init(){
     func_check_env

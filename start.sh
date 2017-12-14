@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+set -x
 
 func_init(){
     func_check_env
@@ -97,6 +98,8 @@ func_main(){
     func_init
     func_set_service_nodes
     func_modify_conf
+    echo $TENANT_ID"_"$PLUGIN_ID"_"$SERVICE_NAME
+    echo $SERVICE_NODE
     $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID"_"$PLUGIN_ID"_"$SERVICE_NAME --service-node $SERVICE_NODE
 }
 

@@ -1,5 +1,6 @@
 #!/bin/sh
 set -e
+set -x
 
 func_init(){
     func_check_env
@@ -8,7 +9,7 @@ func_init(){
 func_set_service_nodes(){
     mm=`echo $DEPEND_SERVICE | sed "s/,/ /g"`
     SERVICE_NODE=""
-    if [[ "$PLUGIN_MOEL" == "upnet-plugin" ]];then
+    if [[ "$PLUGIN_MOEL" == "net-plugin:up" ]];then
         SERVICE_NODE=$SERVICE_NAME
     fi 
     for nn in $mm 
@@ -97,7 +98,7 @@ func_main(){
     func_init
     func_set_service_nodes
     func_modify_conf
-    $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID"_"$SERVICE_NAME --service-node $SERVICE_NODE
+    $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID"_"$PLUGIN_ID"_"$SERVICE_NAME --service-node $SERVICE_NODE
 }
 
 func_check_env(){
@@ -125,12 +126,18 @@ func_check_env(){
         echo "need env TENANT_ID"
         exit 9
     fi
+    if [[ -z $PLUGIN_ID ]];then
+        echo "need env PLUGIN_ID"
+        exit 9
+    fi
 }
 
 func_test(){
-    DEPEND_SERVICE=gr6adef3:9a1576b6a4a8e3185646cdae916adef3,gr123123:678906781923123sdfssdfsgsgs,gr44444:adsfadfafadfasdfasdfasdf
+    export DEPEND_SERVICE=gr6adef3:9a1576b6a4a8e3185646cdae916adef3,gr123123:678906781923123sdfssdfsgsgs,gr44444:adsfadfafadfasdfasdfasdf
     #DEPEND_SERVICE=gr6adef3:9a1576b6a4a8e3185646cdae916adef3
-    TENANT_ID=1b05123123124tenantid
+    export TENANT_ID=1b05123123124tenantid
+    export SERVICE_NAME=grtest12
+    export PLUGIN_ID=envoy123123123123
 }
 
 if [[ $1 == "test" ]];then

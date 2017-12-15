@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 set -x
 
@@ -7,6 +7,8 @@ func_init(){
 }
 
 func_set_service_nodes(){
+    echo "in set service nodes"
+    echo "service_name is $SERVICE_NAME"
     mm=`echo $DEPEND_SERVICE | sed "s/,/ /g"`
     SERVICE_NODE=""
     if [[ "$PLUGIN_MOEL" == "net-plugin:up" ]];then
@@ -95,7 +97,6 @@ func_update_conf(){
 }
 
 func_main(){
-    env
     func_init
     func_set_service_nodes
     func_modify_conf

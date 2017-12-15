@@ -12,6 +12,7 @@ func_set_service_nodes(){
     mm=`echo $DEPEND_SERVICE | sed "s/,/ /g"`
     SERVICE_NODE=""
     if [[ "$PLUGIN_MOEL" == "net-plugin:up" ]];then
+        echo "set service_node with service_name"
         SERVICE_NODE=$SERVICE_NAME
     fi 
     for nn in $mm 
@@ -23,7 +24,9 @@ func_set_service_nodes(){
         fi
         SERVICE_NODE=$SERVICE_NODE"_"$ALIAS
     done
-    echo $SERVICE_NODE
+    echo "service node is $SERVICE_NODE"
+    echo "plugin id is $PLUGIN_ID"
+    echo "plugin model is $PLUGIN_MOEL"
 }
 
 func_modify_conf(){
@@ -97,12 +100,9 @@ func_update_conf(){
 }
 
 func_main(){
-    echo "plugin id is $PLUGIN_ID"
     func_init
     func_set_service_nodes
     func_modify_conf
-    echo $TENANT_ID"_"$PLUGIN_ID"_"$SERVICE_NAME
-    echo $SERVICE_NODE
     $ENVOY_BINARY -c $CONFIGPATH --service-cluster $TENANT_ID"_"$PLUGIN_ID"_"$SERVICE_NAME --service-node $SERVICE_NODE
 }
 

@@ -95,6 +95,7 @@ func_update_conf(){
 }
 
 func_main(){
+    env
     func_init
     func_set_service_nodes
     func_modify_conf

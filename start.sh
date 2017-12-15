@@ -97,6 +97,7 @@ func_update_conf(){
 }
 
 func_main(){
+    echo "plugin id is $PLUGIN_ID"
     func_init
     func_set_service_nodes
     func_modify_conf
@@ -144,7 +145,7 @@ func_test(){
     export PLUGIN_ID=envoy123123123123
 }
 
-if [[ $1 == "test" ]];then
+if [[ "$1" == "test" ]];then
     func_test
 fi
 

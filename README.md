@@ -6,7 +6,7 @@
 
 `LIMITS`  熔断限制tcp默认1024, 设置10250为熔断
 
-`MaxPendingRequests` 最大等待请求数限制默认1024, 设置10250为不等待请求
+`MaxPendingRequests` 最大挂起请求默认1024, 设置10250为直接挂起请求
 
 `MaxRequests` 最大请求数限制默认为1024, 设置10250为0请求
 

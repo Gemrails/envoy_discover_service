@@ -1,4 +1,4 @@
-From lyft/envoy-alpine
+FROM lyft/envoy-alpine
 MAINTAINER pujielan@gmail.com
 
 RUN apk --no-cache add bash
